@@ -7,23 +7,40 @@ import org.acme.repositories.ExercicioCategoriaRepository;
 import jakarta.ws.rs.Produces;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
 @Path("/categorias")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
 public class ExercicioCategoriaResource {
     
     @Inject
     ExercicioCategoriaRepository repository;
 
     @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
     public Response create(ExercicioCategoria c) {
         return Response.ok(repository.create(c)).build();
+    }
+
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response update(ExercicioCategoria c) {
+        return Response.ok(repository.update(c)).build();
+    }
+
+    @DELETE
+    @Path("{id}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response delete(@PathParam("id") Long id) {
+        return Response.ok(repository.delete(id)).build();
     }
 
     @GET
