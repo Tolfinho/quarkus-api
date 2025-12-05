@@ -7,7 +7,7 @@ public class Exercicio {
     private String nome;
     private String descricao;
 
-    public Exercicio() {}
+    public Exercicio() {  }
 
     public Exercicio(Long id, Long categoriaId, String nome, String descricao) {
         this.id = id;

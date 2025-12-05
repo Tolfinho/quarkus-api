@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.acme.models.Exercicio;
-import org.acme.models.ExercicioCategoria;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -27,8 +26,8 @@ public class ExercicioRepository {
     }
 
     public Exercicio update(Exercicio e) {
-        var index = this.getExercicioIndex(e.getId());
-        if(index == -1) return null;
+        final var index = this.getExercicioIndex(e.getId());
+        if (index == -1) { return null; };
 
         this.exercicios.get(index).setCategoriaId(e.getCategoriaId());
         this.exercicios.get(index).setNome(e.getNome());
@@ -38,8 +37,8 @@ public class ExercicioRepository {
     }
 
     public boolean delete(Long id) {
-        var index = this.getExercicioIndex(id);
-        if(index == -1) return false;
+        final var index = this.getExercicioIndex(id);
+        if (index == -1) { return false; };
 
         this.exercicios.remove(index);
         return true;
@@ -52,9 +51,10 @@ public class ExercicioRepository {
     private int getExercicioIndex(Long id) {
         int index = -1;
 
-        for(var i=0; i<this.exercicios.size(); i++) {
-            if(this.exercicios.get(i).getId().equals(id))
+        for (var i = 0; i < this.exercicios.size(); i++) {
+            if (this.exercicios.get(i).getId().equals(id)) {
                 index = i;
+            }
         }
 
         return index;

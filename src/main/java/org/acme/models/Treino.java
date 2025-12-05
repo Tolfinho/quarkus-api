@@ -12,7 +12,7 @@ public class Treino {
     private String observacao;
     private List<Long> exercicioIds;
 
-    public Treino() {}
+    public Treino() { }
 
     public Treino(Long id, String nome, LocalDateTime dataHora, Integer duracao, String observacao, List<Long> exercicioIds) {
         this.id = id;

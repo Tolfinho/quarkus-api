@@ -4,7 +4,7 @@ public class ExercicioCategoria {
     private Long id;
     private String nome;
 
-    public ExercicioCategoria() {}
+    public ExercicioCategoria() { }
 
     public ExercicioCategoria(Long id, String nome) {
         this.id = id;

@@ -2,7 +2,6 @@ package org.acme.resources;
 
 import java.util.List;
 
-import org.acme.models.Exercicio;
 import org.acme.models.Treino;
 import org.acme.repositories.TreinoRepository;
 

@@ -1,10 +1,8 @@
 package org.acme.repositories;
 
+import org.acme.models.ExercicioCategoria;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import org.acme.models.ExercicioCategoria;
 
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -27,8 +25,8 @@ public class ExercicioCategoriaRepository {
     }
 
     public ExercicioCategoria update(ExercicioCategoria c) {
-        var index = this.getCategoriaIndex(c.getId());
-        if(index == -1) return null;
+        final var index = this.getCategoriaIndex(c.getId());
+        if (index == -1) { return null; };
 
         this.categorias.get(index).setNome(c.getNome());
 
@@ -36,8 +34,8 @@ public class ExercicioCategoriaRepository {
     }
 
     public boolean delete(Long id) {
-        var index = this.getCategoriaIndex(id);
-        if(index == -1) return false;
+        final var index = this.getCategoriaIndex(id);
+        if (index == -1) { return false; };
 
         this.categorias.remove(index);
         return true;
@@ -50,9 +48,10 @@ public class ExercicioCategoriaRepository {
     public ExercicioCategoria getById(Long id) {
         ExercicioCategoria foundCategoria = null;
 
-        for(var i=0; i<this.categorias.size(); i++) {
-            if(this.categorias.get(i).getId().equals(id))
+        for (var i = 0; i < this.categorias.size(); i++) {
+            if (this.categorias.get(i).getId().equals(id)) {
                 foundCategoria = this.categorias.get(i);
+            }
         }
 
         return foundCategoria;
@@ -61,9 +60,10 @@ public class ExercicioCategoriaRepository {
     private int getCategoriaIndex(Long id) {
         int index = -1;
 
-        for(var i=0; i<this.categorias.size(); i++) {
-            if(this.categorias.get(i).getId().equals(id))
+        for (var i = 0; i < this.categorias.size(); i++) {
+            if (this.categorias.get(i).getId().equals(id)) {
                 index = i;
+            }
         }
 
         return index;

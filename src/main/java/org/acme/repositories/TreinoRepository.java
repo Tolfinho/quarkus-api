@@ -1,10 +1,8 @@
 package org.acme.repositories;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.acme.models.Exercicio;
 import org.acme.models.Treino;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -33,8 +31,8 @@ public class TreinoRepository {
     }
 
     public Treino update(Treino t) {
-        var index = this.getTreinoIndex(t.getId());
-        if(index == -1) return null;
+        final var index = this.getTreinoIndex(t.getId());
+        if (index == -1) { return null; };
 
         this.treinos.get(index).setNome(t.getNome());
         this.treinos.get(index).setDataHora(t.getDataHora());
@@ -46,8 +44,8 @@ public class TreinoRepository {
     }
 
     public boolean delete(Long id) {
-        var index = this.getTreinoIndex(id);
-        if(index == -1) return false;
+        final var index = this.getTreinoIndex(id);
+        if (index == -1) { return false; };
 
         this.treinos.remove(index);
         return true;
@@ -60,9 +58,10 @@ public class TreinoRepository {
     private int getTreinoIndex(Long id) {
         int index = -1;
 
-        for(var i=0; i<this.treinos.size(); i++) {
-            if(this.treinos.get(i).getId().equals(id))
+        for (var i = 0; i < this.treinos.size(); i++) {
+            if (this.treinos.get(i).getId().equals(id)) {
                 index = i;
+            }
         }
 
         return index;

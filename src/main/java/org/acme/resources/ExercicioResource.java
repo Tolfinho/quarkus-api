@@ -3,7 +3,6 @@ package org.acme.resources;
 import java.util.List;
 
 import org.acme.models.Exercicio;
-import org.acme.models.ExercicioCategoria;
 import org.acme.repositories.ExercicioRepository;
 
 import jakarta.ws.rs.Produces;
